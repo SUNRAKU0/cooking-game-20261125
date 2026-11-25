@@ -14,6 +14,7 @@ import {
 } from './config.js';
 import { INGREDIENT_DRAW, drawBurnt, drawDish } from './icons.js';
 import { isMuted } from './audio.js';
+import { dishForPan } from './state.js';
 import {
   AGAIN_BTN,
   BIN_AREA,
@@ -142,6 +143,16 @@ function drawOrders(ctx, state) {
     rr(ctx, r.x + 251, r.y + 71, 94 * frac, 10, 5);
     ctx.fill();
     text(ctx, `${Math.ceil(order.patience)} dtk`, r.x + 298, r.y + 48, 13, '#7a3b12', 'bold');
+    // Ready-to-serve badge: a plate with this dish is already waiting
+    // on the counter, so the cook can see at a glance which order to
+    // serve instead of matching dish names by eye.
+    const ready = state.plates.some((p) => p.dishId === order.dishId);
+    if (ready) {
+      ctx.fillStyle = '#2e7d32';
+      rr(ctx, r.x + r.w - 120, r.y + 8, 110, 24, 12);
+      ctx.fill();
+      text(ctx, '✓ SIAP DIANTAR', r.x + r.w - 65, r.y + 21, 13, '#ffffff');
+    }
   }
 }
 
@@ -192,6 +203,16 @@ function drawStoveAndWok(ctx, state, now) {
     ctx.arc(WOK.x, WOK.y, WOK.r - 4, -Math.PI / 2, -Math.PI / 2 + frac * Math.PI * 2);
     ctx.stroke();
     text(ctx, 'Memasak…', WOK.x, WOK.y, 20, '#ffe9b0');
+  }
+  // Wok preview: tell the cook what the pan will become before they
+  // commit to cooking it — a wrong combo only shows up as burnt after.
+  if (state.cooking <= 0 && state.pan.length > 0) {
+    const dishId = dishForPan(state.pan);
+    if (dishId) {
+      text(ctx, `Akan jadi: ${DISHES[dishId].name}`, WOK.x, WOK.y + 122, 15, '#2e7d32');
+    } else {
+      text(ctx, 'Bukan resep yang dikenal…', WOK.x, WOK.y + 122, 15, '#a02c1e');
+    }
   }
 }
 

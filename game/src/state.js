@@ -135,6 +135,11 @@ export function tick(state, dt) {
       } else if (!dishId) {
         state.failed += 1;
       }
+      // A burnt wok is a teaching moment: say why it burnt instead of
+      // leaving the cook to guess which ingredient was wrong.
+      if (!dishId) {
+        showToast(state, 'Gosong! Kombinasi bahan bukan resep yang dikenal.');
+      }
     }
   }
 
@@ -195,7 +200,7 @@ export function seedShot(state, shot) {
     state.orders = [
       { id: 101, dishId: 'nasgor', patience: 18, max: 30 },
       { id: 102, dishId: 'sate', patience: 9, max: 26 },
-      { id: 103, dishId: 'miegor', patience: 24, max: 30 },
+      { id: 103, dishId: 'gado', patience: 24, max: 30 },
     ];
     state.pan = ['nasi', 'telur'];
     state.plates = [{ dishId: 'gado', born: 40 }];
