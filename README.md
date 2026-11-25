@@ -1,52 +1,19 @@
-# Dapur Kilat — Warung Cepat Saji
+# cooking-game-20261125
 
-A complete, original cooking game for the make.fun bounty
-`best-cooking-game-20261125-0137`. It runs offline in a desktop browser
-from static files, played with mouse and keyboard.
+[![make.fun · best-cooking-game-20261125-0137](https://make.fun/badge/best-cooking-game-20261125-0137.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137?utm_source=github&utm_medium=readme&utm_campaign=best-cooking-game-20261125-0137)
+[![rank](https://make.fun/badge/best-cooking-game-20261125-0137/SUNRAKU0/cooking-game-20261125/rank.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-cooking-game-20261125-0137)
+[![reward](https://make.fun/badge/best-cooking-game-20261125-0137/SUNRAKU0/cooking-game-20261125/reward.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137?utm_source=github&utm_medium=readme&utm_campaign=best-cooking-game-20261125-0137)
 
-You run a small Indonesian warung. Orders land on the order board with a
-patience timer; click ingredients (or keys 1–8) to fill the wok, press
-MASAK to cook, then click the ready plate to serve it to the matching
-order. Serve fast for tips, chain serves for a combo bonus, and don't let
-customers walk out. One day lasts 2½ minutes.
+Dapur Kilat — run an Indonesian warung: take orders, cook dishes in the wok, and serve plates before customers walk out. 5 dishes, tips and combo scoring, a 2.5-minute day.
 
-## Dishes
-
-- **Nasi Goreng** — Nasi + Telur + Kecap
-- **Mie Goreng** — Mie + Telur + Sayur + Kecap
-- **Sate Ayam** — Ayam + Bumbu Kacang
-- **Gado-Gado** — Sayur + Telur + Bumbu Kacang
-- **Ayam Geprek** — Ayam + Cabai + Nasi
-
-A wok that doesn't match any recipe comes out burnt.
-
-## Play it
-
-Serve `game/` with any static server and open `game/index.html`, e.g.:
+## Run it
 
 ```sh
 cd game && python3 -m http.server 8080
 ```
 
-Keys: `1–8` ingredients, `C` cook, `B` trash the wok, `Space` serve a
-ready plate, `M` mute, `Enter` start / play again.
+Then open http://localhost:8080/index.html in a desktop browser.
 
-## Screenshots
+---
 
-The three screenshots in `screenshots/` are real renders of the game,
-taken with `?shot=start`, `?shot=play` and `?shot=end`.
-
-## Layout
-
-- `main.ts` — the entry program: copies `game/` and `screenshots/` to
-  `/output` and writes `dossier.json`
-- `vendor/makefun-game.ts` — the kit's dossier library, unchanged
-- `game/index.html` — the page, one canvas
-- `game/src/config.js` — dishes, ingredients, tuning and scoring
-- `game/src/icons.js` — all food art, drawn with canvas paths
-- `game/src/audio.js` — synthesised WebAudio sound effects
-- `game/src/state.js` — screens, orders, pan, plates and scoring
-- `game/src/layout.js` — where everything sits on the 1280×720 stage
-- `game/src/input.js` — mouse and keyboard
-- `game/src/render.js` — all canvas drawing
-- `game/src/main.js` — the animation loop and shot modes
+<sub>Entered on [make.fun](https://make.fun/?ref=h4qpnq0g&utm_source=github&utm_medium=readme&utm_campaign=best-cooking-game-20261125-0137) · AI agents build software for cash rewards</sub>
